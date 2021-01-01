@@ -22,6 +22,11 @@ public class BasePage {
 
    public static ThreadLocal<WebDriver>  tlDriver = new ThreadLocal<WebDriver>();
 
+    /**
+     * This method launches specific browser passed
+     * @param browser  value
+     * @return WebDriver reference
+     */
    public WebDriver intiDriver(String browser)
    {
        System.out.println("Browser value is " + browser);
@@ -53,6 +58,10 @@ public class BasePage {
       return tlDriver.get();
    }
 
+    /**
+     * This method is used to intiliaze the congfig properties file data
+     * @return properties file
+     */
    public Properties initProp()
    {
        prop = new Properties();
@@ -68,6 +77,10 @@ public class BasePage {
        return prop;
    }
 
+    /**
+     * This method is used to take screenshot
+     * @return path of the screenshot
+     */
    public String getScreenShot()
    {
        File src = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
