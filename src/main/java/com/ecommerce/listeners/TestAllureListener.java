@@ -21,7 +21,7 @@ public class TestAllureListener extends BasePage implements ITestListener {
 	// Text attachments for Allure
 	@Attachment(value = "Page screenshot", type = "image/png")
 	public byte[] saveScreenshotPNG(WebDriver driver) {
-		return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
+		return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
 	}
 
 	// Text attachments for Allure
@@ -63,7 +63,7 @@ public class TestAllureListener extends BasePage implements ITestListener {
 		Object testClass = iTestResult.getInstance();
 		//WebDriver driver = BasePage.getDriver();
 		// Allure ScreenShotRobot and SaveTestLog
-		if (getDriver() instanceof WebDriver) {
+		if (driver instanceof WebDriver) {
 			System.out.println("Screenshot captured for test case:" + getTestMethodName(iTestResult));
 			saveScreenshotPNG(driver);
 		}
