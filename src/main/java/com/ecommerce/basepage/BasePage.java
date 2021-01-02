@@ -20,7 +20,7 @@ public class BasePage {
    public WebDriver driver;
    public Properties prop;
 
-  // public  ThreadLocal<WebDriver>  tlDriver = new ThreadLocal<WebDriver>();
+     public static ThreadLocal<WebDriver>  tlDriver = new ThreadLocal<WebDriver>();
 
     /**
      * This method launches specific browser passed
@@ -34,30 +34,29 @@ public class BasePage {
        if(browser.equalsIgnoreCase("chrome"))
        {
            WebDriverManager.chromedriver().setup();
-          driver = new ChromeDriver();
-          // tlDriver.set(new ChromeDriver());
+         // driver = new ChromeDriver();
+          tlDriver.set(new ChromeDriver());
        }
        else if(browser.equalsIgnoreCase("firefox"))
        {
            WebDriverManager.firefoxdriver().setup();
-           driver = new FirefoxDriver();
-          // tlDriver.set(new FirefoxDriver());
+          // driver = new FirefoxDriver();
+          tlDriver.set(new FirefoxDriver());
        }
        else
            System.out.println(" Browser value is not correct " + browser);
 
-       driver.manage().deleteAllCookies();
-       driver.manage().window().maximize();
-       driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+       getDriver().manage().deleteAllCookies();
+       getDriver().manage().window().maximize();
+       getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-       return driver;
+       return getDriver();
    }
-/*
    public static synchronized WebDriver getDriver()
    {
 
        return tlDriver.get();
-   }*/
+   }
 
     /**
      * This method is used to intiliaze the congfig properties file data
@@ -84,7 +83,7 @@ public class BasePage {
      */
    public String getScreenShot()
    {
-       File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+       File src = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
        String path = System.getProperty("user.dir") + "/Screenshots/" +System.currentTimeMillis() + ".png";
        File destination = new File(path);
 

@@ -24,4 +24,10 @@
             <class name="com.ecommerce.tests.RegistrationPageTest" />
         </classes>
     </test>
+
+    <test name="Product Test">
+        <classes>
+            <class name="com.ecommerce.tests.ProductInfoTest" />
+        </classes>
+    </test>
 </suite> <!-- Suite -->
