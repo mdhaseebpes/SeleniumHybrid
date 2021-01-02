@@ -23,7 +23,7 @@ public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver)
     {
-        this.driver = driver;
+       this.driver = driver;
         elementUtils = new ElementUtils(driver);
     }
 
