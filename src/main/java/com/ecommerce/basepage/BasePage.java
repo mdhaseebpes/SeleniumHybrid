@@ -67,7 +67,7 @@ public class BasePage {
        prop = new Properties();
 
        try {
-           FileInputStream file  = new FileInputStream(".\\src\\main\\java\\com\\ecommerce\\configproperties\\config.properties");
+           FileInputStream file  = new FileInputStream("./src/main/java/com/ecommerce/config/config.properties");
            prop.load(file);
        } catch (FileNotFoundException e) {
            e.printStackTrace();
